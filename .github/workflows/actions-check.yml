@@ -1,0 +1,21 @@
+# Pirate isolated personal-account Actions diagnostic.
+name: Personal account Actions diagnostic
+on:
+  push:
+    branches:
+      - diagnostic/actions-check-20261107
+  workflow_dispatch:
+permissions: {}
+jobs:
+  runner-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    steps:
+      - name: Verify hosted runner
+        shell: bash
+        run: |
+          printf 'GitHub Actions runner is working.\n'
+          printf 'Repository: %s\n' "$GITHUB_REPOSITORY"
+          printf 'Ref: %s\n' "$GITHUB_REF"
+          printf 'Commit: %s\n' "$GITHUB_SHA"
+          uname -s
